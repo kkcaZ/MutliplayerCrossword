@@ -7,12 +7,27 @@
         <title>Websockets test</title>
 
         <script src="./client.js"></script>
+        <script src="./mouse.js"></script>
+        <script src="./userInteraction.js"></script>
         <link rel="stylesheet" href="./client.css" />
     </head>
     <body>
         <div class="container">
             <div id="crossword"></div>
-            <code id="plainText"></code>
+            <div id="clues"></div>
+        </div>
+        <div class="optionContainer">
+            <div class="option">
+                <h3>Change Colour:</h3>
+                <input id="colourPicker" name="colour" placeholder="Enter colour hex" />
+                <button onclick="ChangeColour()">Submit</button>
+            </div>
+
+            <div class="option">
+                <h3>Change Name:</h3>
+                <input id="nameChanger" name="name" placeholder="Enter new name" />
+                <button onclick="ChangeName()">Submit</button>
+            </div>
         </div>
     </body>
 </html>

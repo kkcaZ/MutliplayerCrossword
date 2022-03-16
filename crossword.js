@@ -1,8 +1,9 @@
 import crossword from "crossword-layout-generator";
 import inputs from "./input.js";
 
+const layout = crossword.generateLayout(inputs);
+
 export function GenerateCrosswordHtml() {
-    const layout = crossword.generateLayout(inputs);
     const rows = layout.rows;
     const cols = layout.cols;
     const output_json = layout.result;
@@ -30,18 +31,30 @@ export function GenerateCrosswordHtml() {
                 position: item.position,
                 orientation: item.orientation,
                 first: i == 0,
+                positionIndicator: "",
             };
 
             var letterExists = false;
             letterObjects.forEach((obj) => {
                 if (obj.xPos == letterObject.xPos && obj.yPos == letterObject.yPos) {
                     obj.className += ` ${item.position}-${item.orientation}`;
+
+                    if (i == 0) {
+                        obj.className += " first";
+                        obj.positionIndicator = `<p class='posIndicator'>${item.position}</p>`;
+                    }
+
                     letterExists = true;
                 }
             });
 
             if (!letterExists) {
                 letterObjects.push(letterObject);
+
+                if (i == 0) {
+                    letterObject.className += " first";
+                    letterObject.positionIndicator = `<p class='posIndicator'>${item.position}</p>`;
+                }
             }
 
             xPos += xIncrement;
@@ -50,8 +63,6 @@ export function GenerateCrosswordHtml() {
     });
 
     letterObjects.forEach((obj) => {
-        var positionIndicator = obj.first ? `<p class='posIndicator'>${obj.position}</p>` : "";
-
         var newHtml = `<span class='crossword-box'
                             style='grid-column: ${obj.xPos} / span 1; grid-row: ${obj.yPos} / span 1;' >
                             <input maxlength='1'
@@ -60,7 +71,7 @@ export function GenerateCrosswordHtml() {
                                 onkeydown='KeyboardCommands(event, this.name, this.className)'
                                 name='${obj.xPos}-${obj.yPos}'
                                 class='${obj.className}'/>
-                            ${positionIndicator}
+                            ${obj.positionIndicator}
                         </span>`;
 
         html += newHtml;
@@ -71,4 +82,31 @@ export function GenerateCrosswordHtml() {
     return html;
 }
 
-export function GenerateCluesHtml() {}
+export function GenerateCluesHtml() {
+    var html = "<div class='cluesContainer'><div class='cluesColumn'><h4>Across</h4>";
+    const outputJson = layout.result;
+
+    outputJson.forEach((word) => {
+        if (word.orientation == "across")
+            html += `<a class="crosswordClue"
+                        onclick="ClueSelect(this, '${word.position}-${word.orientation}')">
+                        ${word.position}. ${word.clue}
+                    </a>`;
+    });
+
+    html += "</div>";
+
+    html += "<div class='cluesColumn'><h4>Down</h4>";
+
+    outputJson.forEach((word) => {
+        if (word.orientation == "down")
+            html += `<a class="crosswordClue"
+                onclick="ClueSelect(this, '${word.position}-${word.orientation}')">
+                ${word.position}. ${word.clue}
+            </a>`;
+    });
+
+    html += "</div></div>";
+
+    return html;
+}

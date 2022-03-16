@@ -1,5 +1,6 @@
 body {
     box-sizing: border-box;
+    font-family: "Roboto";
 }
 
 .container {
@@ -12,9 +13,9 @@ body {
     border: 5px solid black;
     display: grid;
     margin: 50px;
-    font-family: "Roboto";
     background-color: black;
     grid-gap: 2px;
+    z-index: 0;
 }
 
 .crossword-box {
@@ -28,12 +29,17 @@ body {
     background-color: white;
 }
 
+.crossword-box input:hover {
+    cursor: pointer;
+}
+
 .crossword-box input {
     width: 26px;
     height: 26px;
     border: none;
     font-size: 1.25em;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .crossword-box input:focus {
@@ -41,11 +47,11 @@ body {
 }
 
 .posIndicator {
-    font-size: 6pt;
-    margin: 0px;
     width: auto;
+    margin: 0px;
     padding: 2px;
-    transform: translateY(-100%);
+    font-size: 6pt;
+    transform: translateY(-200%);
     text-align: left;
     user-select: none;
     pointer-events: none;
@@ -57,8 +63,54 @@ body {
 }
 
 .cursor {
-    width: 20px;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    background-size: 20px;
     position: absolute;
-    transition: top 0.1s ease;
-    transition: left 0.1s linear;
+    transition: left 0.01s linear, top 0.01s linear;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid red;
+    color: red;
+}
+
+.cluesContainer {
+    display: flex;
+    font-family: "Roboto";
+}
+
+.cluesContainer .cluesColumn {
+    margin: 20px;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.crosswordClue {
+    display: block;
+    padding: 5px 2px;
+}
+
+.crosswordClue:hover {
+    cursor: pointer;
+}
+
+.cursorName {
+    transform: translate(20px, -15px);
+    width: 200px;
+}
+
+.optionContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 40vw;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
 }
