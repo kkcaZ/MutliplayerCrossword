@@ -1,0 +1,21 @@
+{
+  "name": "WebsocketsTest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "crossword-layout-generator": "^0.1.1",
+    "express": "^4.17.3",
+    "uuid": "^8.3.2",
+    "websocket": "^1.0.34",
+    "ws": "^8.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

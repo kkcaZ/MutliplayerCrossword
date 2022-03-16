@@ -1,0 +1,64 @@
+body {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.crossword {
+    border: 5px solid black;
+    display: grid;
+    margin: 50px;
+    font-family: "Roboto";
+    background-color: black;
+    grid-gap: 2px;
+}
+
+.crossword-box {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.25em;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    border: none;
+    background-color: white;
+}
+
+.crossword-box input {
+    width: 26px;
+    height: 26px;
+    border: none;
+    font-size: 1.25em;
+    text-align: center;
+}
+
+.crossword-box input:focus {
+    outline: none;
+}
+
+.posIndicator {
+    font-size: 6pt;
+    margin: 0px;
+    width: auto;
+    padding: 2px;
+    transform: translateY(-100%);
+    text-align: left;
+    user-select: none;
+    pointer-events: none;
+    font-family: "Arial Black";
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.cursor {
+    width: 20px;
+    position: absolute;
+    transition: top 0.1s ease;
+    transition: left 0.1s linear;
+}
