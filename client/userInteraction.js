@@ -129,8 +129,8 @@ function ClueSelect(element, className) {
     SelectWord(className);
 }
 
-function ChangeColour() {
-    var colourHex = document.getElementById("colourPicker").value;
+function ChangeColour(colourHex) {
+    console.log(colourHex);
     socket.send(JSON.stringify({ type: "colourChange", colourHex }));
 }
 
