@@ -1,50 +1,34 @@
 export default [
     {
-        clue: "African Capital",
-        answer: "Addis Ababa",
+        clue: "What month was Redev Ltd founded?",
+        answer: "June",
     },
     {
-        clue: "It points the way",
-        answer: "Arrow",
+        clue: "Which ex employee tricked Phil into thinking Windows 9 was real?",
+        answer: "Conor",
     },
     {
-        clue: "Fool",
-        answer: "Dolt",
+        clue: "In what month is Nathan's birthday?",
+        answer: "April",
     },
     {
-        clue: "Carnal",
-        answer: "Sexual",
+        clue: "Moe's favourite music genre",
+        answer: "Kpop",
     },
     {
-        clue: "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
-        answer: "Perplex",
+        clue: "Coder",
+        answer: "Programmer",
     },
     {
-        clue: "",
-        answer: "Lewd",
+        clue: "Cat Kerr (anag.)",
+        answer: "Tracker",
     },
     {
-        clue: "",
-        answer: "Lambchop",
+        clue: "What day was Phil born?",
+        answer: "Wednesday",
     },
     {
-        clue: "",
-        answer: "Bogus",
-    },
-    {
-        clue: "",
-        answer: "Baby boom",
-    },
-    {
-        clue: "",
-        answer: "Big shot",
-    },
-    {
-        clue: "",
-        answer: "Supergrass",
-    },
-    {
-        clue: "",
-        answer: "Doctor",
+        clue: "Toby's favourite thing",
+        answer: "Big Pumps",
     },
 ];

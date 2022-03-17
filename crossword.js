@@ -1,7 +1,19 @@
 import crossword from "crossword-layout-generator";
-import inputs from "./input.js";
+import input from "./input.js";
 
-const layout = crossword.generateLayout(inputs);
+const answers = []
+
+input.forEach(element => {
+    answers.push(element.answer);
+});
+
+input.forEach(i => {
+    i.answer = i.answer.replace(" ", "");
+})
+
+console.log(input);
+
+const layout = crossword.generateLayout(input);
 
 export function GenerateCrosswordHtml() {
     const rows = layout.rows;
@@ -88,6 +100,18 @@ export function GenerateCluesHtml() {
 
     outputJson.forEach((word) => {
         if (word.orientation == "across")
+            var clueWords = word.answer.split(" ");
+
+            var lengths = [];
+            if (clueWords != undefined) {
+                clueWords.forEach(x => {
+                    lengths.push(x.length);
+                })
+            }
+            else {
+                lengths.push(word.answer.length);
+            }
+
             html += `<a class="crosswordClue"
                         onclick="ClueSelect(this, '${word.position}-${word.orientation}')">
                         ${word.position}. ${word.clue}
@@ -98,12 +122,27 @@ export function GenerateCluesHtml() {
 
     html += "<div class='cluesColumn'><h4>Down</h4>";
 
+    var counter = 0;
     outputJson.forEach((word) => {
         if (word.orientation == "down")
+            var clueWords = answers[counter].split(" ");
+
+            var lengths = [];
+            if (clueWords != undefined) {
+                clueWords.forEach(x => {
+                    lengths.push(x.length);
+                })
+            }
+            else {
+                lengths.push(word.answer.length);
+            }
+
             html += `<a class="crosswordClue"
-                onclick="ClueSelect(this, '${word.position}-${word.orientation}')">
-                ${word.position}. ${word.clue}
-            </a>`;
+                        onclick="ClueSelect(this, '${word.position}-${word.orientation}')">
+                        ${word.position}. ${word.clue} (${lengths.join(',')})
+                    </a>`;
+        
+        counter++;
     });
 
     html += "</div></div>";
