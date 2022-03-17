@@ -47,8 +47,8 @@ socket.addEventListener("message", function message(event) {
         case "colourChange":
             console.log(parsedData.colourHex);
             var cursor = document.getElementById(parsedData.guid);
-            cursor.style = `border-bottom: 20px solid #${parsedData.colourHex.replace("#", "")};`;
-            cursor.style.color = `#${parsedData.colourHex.replace("#", "")}`;
+            cursor.style.setProperty("border-bottom", `20px solid ${parsedData.colourHex}`);
+            cursor.style.color = parsedData.colourHex;
             break;
 
         case "nameChange":

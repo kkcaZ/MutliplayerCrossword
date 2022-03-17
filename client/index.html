@@ -4,11 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Websockets test</title>
+        <title>Mutliplayer Crossword :)</title>
 
-        <script src="./client.js"></script>
+        <script src="./utils.js"></script>
         <script src="./mouse.js"></script>
         <script src="./userInteraction.js"></script>
+        <script src="./client.js"></script>
         <link rel="stylesheet" href="./client.css" />
     </head>
     <body>
@@ -19,13 +20,20 @@
         <div class="optionContainer">
             <div class="option">
                 <h3>Change Colour:</h3>
-                <input id="colourPicker" name="colour" placeholder="Enter colour hex" />
-                <button onclick="ChangeColour()">Submit</button>
+                <input
+                    id="colourPicker"
+                    name="colour"
+                    type="color"
+                    value="#ff0000"
+                    placeholder="Enter colour hex"
+                    oninput="throttle(() => ChangeColour(this.value), 500)"
+                    onchange="ChangeColour(this.value)"
+                />
             </div>
 
             <div class="option">
                 <h3>Change Name:</h3>
-                <input id="nameChanger" name="name" placeholder="Enter new name" />
+                <input id="nameChanger" name="name" type="text" placeholder="Enter new name" />
                 <button onclick="ChangeName()">Submit</button>
             </div>
         </div>
