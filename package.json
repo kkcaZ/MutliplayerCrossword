@@ -7,6 +7,7 @@
     "dependencies": {
         "crossword-layout-generator": "^0.1.1",
         "express": "^4.17.3",
+        "jsdom": "^20.0.0",
         "uuid": "^8.3.2",
         "ws": "^8.5.0"
     },
